@@ -130,7 +130,10 @@ export const useInfiniteFetchKnowledgeList = () => {
     searchString,
   };
 };
-
+/**
+ * 创建知识库的时候
+ * @returns
+ */
 export const useCreateKnowledge = () => {
   const queryClient = useQueryClient();
   const {

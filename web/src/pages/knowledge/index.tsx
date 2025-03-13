@@ -74,6 +74,7 @@ const KnowledgeList = () => {
             onClick={showModal}
             className={styles.topButton}
           >
+            {/* 创建知识库 */}
             {t('createKnowledgeBase')}
           </Button>
         </Space>

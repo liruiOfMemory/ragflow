@@ -70,7 +70,7 @@ def initRootLogger(logfile_basename: str, log_format: str = "%(asctime)-15s %(le
         if pkg_name not in pkg_levels:
             pkg_levels[pkg_name] = logging.getLevelName(logging.WARNING)
     if 'root' not in pkg_levels:
-        pkg_levels['root'] = logging.getLevelName(logging.INFO)
+        pkg_levels['root'] = logging.getLevelName(logging.WARNING)
 
     for pkg_name, pkg_level in pkg_levels.items():
         pkg_logger = logging.getLogger(pkg_name)

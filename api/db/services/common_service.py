@@ -64,8 +64,6 @@ class CommonService:
     @classmethod
     @DB.connection_context()
     def save(cls, **kwargs):
-        # if "id" not in kwargs:
-        #    kwargs["id"] = get_uuid()
         sample_obj = cls.model(**kwargs).save(force_insert=True)
         return sample_obj
 

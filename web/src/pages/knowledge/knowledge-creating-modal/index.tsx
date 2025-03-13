@@ -48,6 +48,7 @@ const KnowledgeCreatingModal = ({
           name="name"
           rules={[{ required: true, message: t('namePlaceholder') }]}
         >
+          {/* 请输入知识库的名称 */}
           <Input placeholder={t('namePlaceholder')} />
         </Form.Item>
       </Form>

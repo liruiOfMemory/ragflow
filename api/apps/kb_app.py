@@ -41,21 +41,17 @@ from rag.settings import PAGERANK_FLD
 @validate_request("name")
 def create():
     req = request.json
-    dataset_name = req["name"]
+    print(req,flush=True)
     if not isinstance(dataset_name, str):
         return get_data_error_result(message="Dataset name must be string.")
     if dataset_name == "":
         return get_data_error_result(message="Dataset name can't be empty.")
-    if len(dataset_name) >= DATASET_NAME_LIMIT:
+    if len(dataset_name) >= DATASET_NAME_LIMIT:     # 限制128
         return get_data_error_result(
             message=f"Dataset name length is {len(dataset_name)} which is large than {DATASET_NAME_LIMIT}")
 
     dataset_name = dataset_name.strip()
-    dataset_name = duplicate_name(
-        KnowledgebaseService.query,
-        name=dataset_name,
-        tenant_id=current_user.id,
-        status=StatusEnum.VALID.value)
+    dataset_name = duplicate_name(KnowledgebaseService.query,name=dataset_name,tenant_id=current_user.id,status=StatusEnum.VALID.value)
     try:
         req["id"] = get_uuid()
         req["tenant_id"] = current_user.id
@@ -64,6 +60,7 @@ def create():
         if not e:
             return get_data_error_result(message="Tenant not found.")
         req["embd_id"] = t.embd_id
+        dataset_name = req["name"]
         if not KnowledgebaseService.save(**req):
             return get_data_error_result()
         return get_json_result(data={"kb_id": req["id"]})

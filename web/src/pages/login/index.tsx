@@ -1,10 +1,10 @@
+import logo from '@/assets/ai.png';
 import { useLogin, useRegister } from '@/hooks/login-hooks';
 import { rsaPsw } from '@/utils';
 import { Button, Checkbox, Form, Input } from 'antd';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Icon, useNavigate } from 'umi';
-import RightPanel from './right-panel';
 
 import { Domain } from '@/constants/common';
 import styles from './index.less';
@@ -69,20 +69,28 @@ const Login = () => {
       <div className={styles.loginLeft}>
         <div className={styles.leftContainer}>
           <div className={styles.loginTitle}>
-            <div>{title === 'login' ? t('login') : t('register')}</div>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <img src={logo} style={{ width: '50px', height: '50px' }}></img>
+              <span style={{ fontSize: '22px', fontWeight: '500' }}>
+                小云智问
+              </span>
+            </div>
+            <div style={{ fontWeight: '400' }}>
+              {title === 'login' ? t('login') : t('register')}
+            </div>
             <span>
               {title === 'login'
                 ? t('loginDescription')
                 : t('registerDescription')}
             </span>
           </div>
-
-          <Form
-            form={form}
-            layout="vertical"
-            name="dynamic_rule"
-            style={{ maxWidth: 600 }}
-          >
+          <Form form={form} layout="vertical" name="dynamic_rule" style={{}}>
             <Form.Item
               {...formItemLayout}
               name="email"
@@ -181,9 +189,6 @@ const Login = () => {
             )}
           </Form>
         </div>
-      </div>
-      <div className={styles.loginRight}>
-        <RightPanel></RightPanel>
       </div>
     </div>
   );

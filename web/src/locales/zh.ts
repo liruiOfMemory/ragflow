@@ -68,7 +68,7 @@ export default {
       setting: '用户设置',
       logout: '登出',
       fileManager: '文件管理',
-      flow: 'Agent',
+      flow: '智能体',
       search: '搜索',
     },
     knowledgeList: {

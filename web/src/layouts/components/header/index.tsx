@@ -10,6 +10,7 @@ import { MouseEventHandler, useCallback, useMemo } from 'react';
 import { useLocation } from 'umi';
 import Toolbar from '../right-toolbar';
 
+import logopng from '@/assets/ai.png';
 import { useTheme } from '@/components/theme-provider';
 import styles from './index.less';
 
@@ -71,7 +72,7 @@ const RagHeader = () => {
           onClick={handleLogoClick}
           className={styles.logoWrapper}
         >
-          <img src="/logo.svg" alt="" className={styles.appIcon} />
+          <img src={logopng} alt="" className={styles.appIcon} />
           <span className={styles.appName}>{appConf.appName}</span>
         </Space>
       </a>

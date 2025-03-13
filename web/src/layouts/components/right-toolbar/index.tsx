@@ -1,7 +1,5 @@
 import { useTranslate } from '@/hooks/common-hooks';
-import { DownOutlined, GithubOutlined } from '@ant-design/icons';
-import { Dropdown, MenuProps, Space } from 'antd';
-import camelCase from 'lodash/camelCase';
+import { MenuProps, Space } from 'antd';
 import React from 'react';
 import User from '../user';
 
@@ -25,7 +23,7 @@ const handleGithubCLick = () => {
 };
 
 const handleDocHelpCLick = () => {
-  window.open('https://ragflow.io/docs/dev/category/guides', 'target');
+  window.open('', 'target');
 };
 
 const RightToolBar = () => {
@@ -34,7 +32,7 @@ const RightToolBar = () => {
   const { setTheme, theme } = useTheme();
 
   const {
-    data: { language = 'English' },
+    data: { language = 'zh' },
   } = useFetchUserInfo();
 
   const handleItemClick: MenuProps['onClick'] = ({ key }) => {
@@ -58,17 +56,19 @@ const RightToolBar = () => {
   return (
     <div className={styled.toolbarWrapper}>
       <Space wrap size={16}>
-        <Dropdown menu={{ items, onClick: handleItemClick }} placement="bottom">
+        {/* <Dropdown menu={{ items, onClick: handleItemClick }} placement="bottom">
           <Space className={styled.language}>
             <b>{t(camelCase(language))}</b>
             <DownOutlined />
           </Space>
-        </Dropdown>
+        </Dropdown> */}
+        <Circle></Circle>
         <Circle>
-          <GithubOutlined onClick={handleGithubCLick} />
-        </Circle>
-        <Circle>
-          <CircleHelp className="size-4" onClick={handleDocHelpCLick} />
+          <CircleHelp
+            style={{ display: 'none' }}
+            className="size-4"
+            onClick={handleDocHelpCLick}
+          />
         </Circle>
         <Circle>
           {theme === 'dark' ? (

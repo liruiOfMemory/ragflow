@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # replace env variables in the service_conf.yaml file
-rm -rf /ragflow/conf/service_conf.yaml
+rm -rf ./conf/service_conf.yaml
 while IFS= read -r line || [[ -n "$line" ]]; do
     # Use eval to interpret the variable with default values
-    eval "echo \"$line\"" >> /ragflow/conf/service_conf.yaml
-done < /ragflow/conf/service_conf.yaml.template
+    eval "echo \"$line\"" >> ./conf/service_conf.yaml
+done < ./docker/service_conf.yaml.template
 
-/usr/sbin/nginx
+# /usr/sbin/nginx
 
 export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/
 
